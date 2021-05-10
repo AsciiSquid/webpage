@@ -5,11 +5,12 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  position: relative;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: fade-intro 1s ease-out;
   }
 }
 
@@ -28,11 +29,15 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes fade-intro {
   from {
-    transform: rotate(0deg);
+    top: 10vh;
+    left: 8vw;
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 100%;
+    top: 0px;
+    left: 0px;
   }
 }
