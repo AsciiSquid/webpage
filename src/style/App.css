@@ -1,9 +1,34 @@
+:root {
+  --color-main: #fc9003;
+  --color-second: #d4360e;
+  --color-bg: #01377e;
+}
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
 
+#waves {
+  position: relative;
+  background: #ccfbfe;
+  height: 6vh;
+}
+
+.wave {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 80%;
+}
+
 .App-logo {
-  height: 40vmin;
+  height: 70vmin;
   pointer-events: none;
   position: relative;
 }
@@ -15,8 +40,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: var(--color-bg);
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,8 +56,8 @@
 
 @keyframes fade-intro {
   from {
-    top: 10vh;
-    left: 8vw;
+    top: 8vh;
+    left: 6vw;
     opacity: 0;
   }
   to {

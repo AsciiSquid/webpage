@@ -1,20 +1,20 @@
 import {ReactComponent as Logo} from './image/asciilogo.svg';
-import Apps from './waves.js'
+import Waves from './waves.js'
 import './style/App.css';
 
 function App() {
   let colors = {
     logo : "#fc9003",
     secondary : "#c94c16",
-    background :  "#4c16c9"
+    background :  "#01377e"
   }
   return (
     <div className="App">
+      <Waves/>
       <header className="App-header">
         <Logo fill={colors.logo} className="App-logo" width="40vmin" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          <Apps />
         </p>
         <a
           className="App-link"
