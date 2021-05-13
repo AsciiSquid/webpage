@@ -10,9 +10,9 @@ function App() {
   }
   return (
     <div className="App">
-      <Waves/>
+      <Waves count={3} speed={1} height={54} amplitude={16} frequency={1} fill={colors.background}/>
       <header className="App-header">
-        <Logo fill={colors.logo} className="App-logo" width="40vmin" alt="logo" />
+        <Logo fill={colors.logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

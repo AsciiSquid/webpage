@@ -16,7 +16,7 @@ body, html {
 
 #waves {
   position: relative;
-  background: #ccfbfe;
+  background: #4787cf;
   height: 6vh;
 }
 
@@ -24,10 +24,11 @@ body, html {
   width: 100%;
   margin: 0;
   padding: 0;
-  opacity: 80%;
+  opacity: 75%;
 }
 
 .App-logo {
+  width: 80vw;
   height: 70vmin;
   pointer-events: none;
   position: relative;
