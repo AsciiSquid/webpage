@@ -10,20 +10,9 @@ function App() {
   }
   return (
     <div className="App">
-      <Waves count={3} speed={1} height={54} amplitude={16} frequency={1} fill={colors.background}/>
+      <Waves count={3} speed={1} height={56} amplitude={14} frequency={0.8} fill={colors.background}/>
       <header className="App-header">
         <Logo fill={colors.logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
