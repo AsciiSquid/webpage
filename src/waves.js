@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useState } from 'react';
+import React, { createRef } from 'react';
 
 const rad = deg => deg * (Math.PI / 180);
 class Wave extends React.Component{
@@ -12,8 +12,9 @@ class Wave extends React.Component{
 
   handleSize(e) {
     this.drawInit();
+    this.draw(); //Invokes draw manually to avoid flickering
   }
-  
+
   drawInit() {
     const { fill } = this.props;
     this.ctx = this.canvas.current.getContext("2d");
@@ -29,7 +30,7 @@ class Wave extends React.Component{
     setInterval(() => {
       this.start = (this.start + speed)%(360/frequency)
       this.draw();
-    }, 32);
+    }, 16);
     window.addEventListener('resize', this.handleSize);
   }
 
@@ -73,7 +74,7 @@ const Waves = (props) => {
   for (var i=0; i < count; i++) {
     wavelist.push(
       <div key={i} style={{position: 'absolute', top: 0, bottom: 0, right: 0, left: 0}}>
-        <Wave {...props} speed={props.speed * (1 + i * 2)} frequency={props.frequency / (1 + i * 2)} />
+        <Wave {...props} speed={props.speed * (1 / (1 + i * 2))} frequency={props.frequency / (1 + i * 2)} />
       </div>
     )
   }
