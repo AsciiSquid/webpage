@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 // Font Awesome Icons
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTwitter} from '@fortawesome/free-brands-svg-icons';
@@ -19,7 +18,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Waves count={3} speed={1} height={56} amplitude={14} frequency={0.8} fill={colors.background}/>
+      <Waves count={3} speed={1} amplitude={14} frequency={0.8} fill={colors.background}/>
       <header className="App-header">
         <Logo fill={colors.logo} className="App-logo" alt="logo" />
         <hr></hr>

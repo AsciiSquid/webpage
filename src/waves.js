@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 
 const rad = deg => deg * (Math.PI / 180);
 class Wave extends React.Component{
@@ -6,22 +6,45 @@ class Wave extends React.Component{
     super(props);
     this.canvas = createRef();
     this.ctx = null;
-    this.start = 0
+    this.start = 0;
+    this.handleSize = this.handleSize.bind(this);
+  }
+
+  handleSize(e) {
+    this.drawInit();
+  }
+  
+  drawInit() {
+    const { fill } = this.props;
+    this.ctx = this.canvas.current.getContext("2d");
+    this.ctx.strokeStyle = 'transparent';
+    this.ctx.fillStyle = fill;
+    this.ctx.canvas.width = window.innerWidth;
+    this.ctx.canvas.height = this.ctx.canvas.parentElement.offsetHeight + 10; //Offset to hide line when resizing window
   }
 
   componentDidMount() {
-    this.ctx = this.canvas.current.getContext("2d");
     const { speed, frequency } = this.props
+    this.drawInit();
     setInterval(() => {
       this.start = (this.start + speed)%(360/frequency)
       this.draw();
-    }, 32)
+    }, 32);
+    window.addEventListener('resize', this.handleSize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleSize);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    this.drawInit();
   }
 
   draw = () => {
-    const { height, amplitude, frequency, fill } = this.props
-    let width = window.innerWidth;
-    this.ctx.canvas.width = width;
+    const { amplitude, frequency, fill } = this.props
+    let width = this.ctx.canvas.width;
+    let height = this.ctx.canvas.height;
     this.ctx.clearRect(0, 0, width, height)
     const mid = height / 2;
     const y = d => amplitude * Math.sin(rad(frequency * d));
@@ -38,9 +61,8 @@ class Wave extends React.Component{
   }
 
   render() {
-    const { height } = this.props
     return (
-        <canvas ref={this.canvas} className="wave" width="100vw" height={height} />
+        <canvas ref={this.canvas} className="wave" width="100vw" />
     );
   }
 }
@@ -56,11 +78,9 @@ const Waves = (props) => {
     )
   }
   return (
-  <div>
     <div id="waves">
       {wavelist}
     </div>
-  </div>
 )}
 
 export default Waves
