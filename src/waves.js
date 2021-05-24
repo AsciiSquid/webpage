@@ -63,7 +63,7 @@ class Wave extends React.Component{
 
   render() {
     return (
-        <canvas ref={this.canvas} className="wave" width="100vw" />
+        <canvas ref={this.canvas} className="wave" width="100vw" style={{position: 'absolute', top: 0, bottom: 0, right: 0, left: 0}}/>
     );
   }
 }
@@ -73,9 +73,7 @@ const Waves = (props) => {
   let wavelist = [];
   for (var i=0; i < count; i++) {
     wavelist.push(
-      <div key={i} style={{position: 'absolute', top: 0, bottom: 0, right: 0, left: 0}}>
-        <Wave {...props} speed={props.speed * (1 / (1 + i * 2))} frequency={props.frequency / (1 + i * 2)} />
-      </div>
+      <Wave key={i} {...props} speed={props.speed * (1 / (1 + i * 2))} frequency={props.frequency / (1 + i * 2)} />
     )
   }
   return (
