@@ -1,31 +1,34 @@
-:root {
-  --color-main: #fc9003;
-  --color-second: #d4360e;
-  --color-bg: #01377e;
-}
-
+/*\ MAIN APP CSS
+Variables located in StyleProps.js
+*/
 
 body, html {
   margin: 0;
   padding: 0;
-  background-color: var(--color-bg);
 }
 
 .App {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
+  background-color: var(--color-background);
 }
 
 #waves {
   position: relative;
-  background: #4787cf;
+  background: var(--color-background-light);
   height: 12vh;
+  --wave-opacity: 0.7;
 }
 
 .wave {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  opacity: 0.7;
+  opacity: var(--wave-opacity);
+}
+
+.wave:first-child {
+  /* Ensures the sum of all waves reaches 100% */
+  opacity: calc(var(--wave-opacity) + calc(calc(1 - var(--wave-opacity)) * var(--wave-opacity)));
 }
 
 .App-logo {
@@ -37,7 +40,6 @@ body, html {
 
 .App-header {
   padding-top: 10vh;
-  background-color: var(--color-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +49,7 @@ body, html {
 
 .App-header hr {
   width: 32vmin;
-  border: 2px solid var(--color-second);
+  border: 2px solid var(--color-secondary);
   border-radius: 2px;
   margin: 4vmin 0px;
 }
@@ -60,13 +62,13 @@ body, html {
 }
 
 .App-links a {
-  color: var(--color-main);
+  color: var(--color-primary);
   transition: color 0.2s ease-in-out;
   animation: color-intro 0.6s ease-out;
 }
 
 .App-links a:hover, a:focus {
-  color: var(--color-second);
+  color: var(--color-secondary);
 }
 
 /* ### @MEDIA ### */
@@ -108,6 +110,6 @@ body, html {
 
 @keyframes color-intro {
   from {
-    color: var(--color-second);
+    color: var(--color-secondary);
   }
 }

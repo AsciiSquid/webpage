@@ -73,7 +73,7 @@ const Waves = (props) => {
   let wavelist = [];
   for (var i=0; i < count; i++) {
     wavelist.push(
-      <Wave key={i} {...props} speed={props.speed * (1 / (1 + i * 2))} frequency={props.frequency / (1 + i * 2)} />
+      <Wave key={i} {...props} speed={props.speed / (1 + i * 2)} frequency={props.frequency / (1 + i * 1.5)} />
     )
   }
   return (
